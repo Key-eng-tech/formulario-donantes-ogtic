@@ -13,16 +13,18 @@
         
         body {
             margin: 0;
-            padding: 20px;
+            padding: 10px;
             background-color: #f5f5f5;
         }
         
         .container {
+            width: 100%;
             max-width: 800px;
             margin: 0 auto;
             background-color: white;
-            padding: 20px;
+            padding: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
         }
         
         .form-header {
@@ -31,7 +33,7 @@
         }
         
         .form-title {
-            font-size: 24px;
+            font-size: 1.5rem;
             font-weight: bold;
             margin-bottom: 10px;
         }
@@ -39,6 +41,8 @@
         .form-subtitle {
             font-style: italic;
             margin-bottom: 20px;
+            font-size: 0.9rem;
+            line-height: 1.4;
         }
         
         .form-group {
@@ -49,18 +53,20 @@
             display: flex;
             flex-wrap: wrap;
             margin-bottom: 15px;
+            gap: 10px;
         }
         
         .form-col {
-            flex: 1;
-            min-width: 200px;
-            padding-right: 15px;
+            flex: 1 1 200px;
+            min-width: 0;
+            padding-right: 5px;
         }
         
         label {
             display: block;
             margin-bottom: 5px;
             font-weight: bold;
+            font-size: 0.9rem;
         }
         
         input[type="text"],
@@ -68,11 +74,13 @@
         input[type="number"],
         input[type="date"],
         input[type="tel"],
+        input[type="time"],
         select {
             width: 100%;
             padding: 8px;
             border: 1px solid #ddd;
             border-radius: 4px;
+            font-size: 0.9rem;
         }
         
         .section-title {
@@ -80,10 +88,12 @@
             margin: 20px 0 10px;
             padding-bottom: 5px;
             border-bottom: 1px solid #ddd;
+            font-size: 1rem;
         }
         
         .radio-group {
             display: flex;
+            flex-wrap: wrap;
             gap: 15px;
             align-items: center;
         }
@@ -98,6 +108,11 @@
             margin: 0;
         }
         
+        .radio-option label {
+            font-weight: normal;
+            margin-bottom: 0;
+        }
+        
         .clinical-questions {
             margin-top: 20px;
         }
@@ -108,23 +123,29 @@
             align-items: center;
             border-bottom: 1px solid #eee;
             padding-bottom: 5px;
+            flex-wrap: wrap;
         }
         
         .question-text {
-            flex: 3;
+            flex: 3 1 200px;
+            font-size: 0.9rem;
+            padding: 5px 0;
         }
         
         .question-options {
-            flex: 1;
+            flex: 1 1 100px;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 20px;
+            padding: 5px 0;
         }
         
         .additional-input {
             margin-top: 5px;
-            margin-left: 20px;
+            margin-left: 0;
+            margin-bottom: 10px;
             display: none;
+            width: 100%;
         }
         
         .physical-exam {
@@ -137,13 +158,13 @@
         .physical-row {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 10px;
             margin-bottom: 15px;
         }
         
         .physical-item {
-            flex: 1;
-            min-width: 120px;
+            flex: 1 1 120px;
+            min-width: 0;
         }
         
         .signatures {
@@ -151,17 +172,20 @@
             justify-content: space-between;
             margin-top: 30px;
             gap: 20px;
+            flex-wrap: wrap;
         }
         
         .signature {
-            flex: 1;
+            flex: 1 1 200px;
             text-align: center;
+            margin-bottom: 15px;
         }
         
         .signature-line {
             border-top: 1px solid black;
             margin-top: 40px;
             padding-top: 5px;
+            font-size: 0.9rem;
         }
         
         .btn-container {
@@ -176,11 +200,76 @@
             border: none;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 16px;
+            font-size: 1rem;
+            transition: background-color 0.3s;
         }
         
         .btn:hover {
             background-color: #0056b3;
+        }
+        
+        /* Estilos específicos para teléfonos pequeños */
+        @media screen and (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .form-title {
+                font-size: 1.3rem;
+            }
+            
+            .form-subtitle {
+                font-size: 0.8rem;
+            }
+            
+            .form-row {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .form-col {
+                padding-right: 0;
+                width: 100%;
+            }
+            
+            .radio-group {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 5px;
+            }
+            
+            .question-row {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .question-text {
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            
+            .question-options {
+                width: 100%;
+                justify-content: flex-start;
+            }
+            
+            .physical-item {
+                flex: 100%;
+            }
+            
+            input[type="text"],
+            input[type="email"],
+            input[type="number"],
+            input[type="date"],
+            input[type="tel"],
+            input[type="time"],
+            select {
+                font-size: 16px; /* Evita el zoom en iOS */
+            }
+            
+            .btn {
+                width: 100%;
+            }
         }
         
         @media print {
@@ -191,26 +280,37 @@
             body {
                 background-color: white;
                 padding: 0;
+                font-size: 12pt;
             }
             
             .container {
                 box-shadow: none;
                 padding: 0;
-            }
-        }
-        
-        @media (max-width: 600px) {
-            .form-col {
-                flex: 100%;
-                padding-right: 0;
+                max-width: 100%;
             }
             
-            .signatures {
-                flex-direction: column;
+            .form-title {
+                font-size: 14pt;
             }
             
-            .signature {
-                margin-bottom: 20px;
+            .form-subtitle {
+                font-size: 10pt;
+            }
+            
+            .question-text, 
+            .radio-option label,
+            label {
+                font-size: 10pt;
+            }
+            
+            input[type="text"],
+            input[type="email"],
+            input[type="number"],
+            input[type="date"],
+            input[type="tel"],
+            input[type="time"],
+            select {
+                border: 1px solid #999;
             }
         }
     </style>
@@ -478,7 +578,6 @@
                     <input type="text" id="q4_detail" name="q4_detail">
                 </div>
                 
-                <!-- Añadir el resto de preguntas -->
                 <div class="question-row">
                     <div class="question-text">5.- ¿Ha ingerido alimentos en las últimas 3 horas?</div>
                     <div class="question-options">
@@ -493,12 +592,12 @@
                     </div>
                 </div>
                 
-                  <div class="question-row">
+                <div class="question-row">
                     <div class="question-text">6.- ¿Está tomando algún medicamento?</div>
                     <div class="question-options">
                         <div class="radio-option">
                             <input type="radio" id="q6_si" name="q6" value="Si" onchange="toggleAdditionalInput('q6_additional')">
-                            <label for="q4_si">SI</label>
+                            <label for="q6_si">SI</label>
                         </div>
                         <div class="radio-option">
                             <input type="radio" id="q6_no" name="q6" value="No" onchange="toggleAdditionalInput('q6_additional')">
@@ -567,7 +666,7 @@
                     </div>
                 </div>
 
-                   <div class="question-row">
+                <div class="question-row">
                     <div class="question-text">11.- ¿Ha tenido fiebre en los ultimos 7 dias?</div>
                     <div class="question-options">
                         <div class="radio-option">
@@ -580,9 +679,6 @@
                         </div>
                     </div>
                 </div>
-
-                
-
                 
                 <div class="question-row">
                     <div class="question-text">12.- Mujer: ¿Está o ha estado embarazada en los últimos 6 meses?</div>
@@ -837,25 +933,22 @@
                 </div>
                 
                 <div class="question-row">
-                 <div class="question-text">29.- ¿Ha tenido mareos, desmayos, convulsiones o epilepsia?</div>
-                 <div class="question-options">
-                 <div class="radio-option">
-                 <input type="radio" id="q29_si" name="q29" value="Si">
-                 <label for="q29_si">SI</label>
+                    <div class="question-text">29.- ¿Ha tenido mareos, desmayos, convulsiones o epilepsia?</div>
+                    <div class="question-options">
+                        <div class="radio-option">
+                            <input type="radio" id="q29_si" name="q29" value="Si" onchange="toggleAdditionalInput('q29_additional')">
+                            <label for="q29_si">SI</label>
+                        </div>
+                        <div class="radio-option">
+                            <input type="radio" id="q29_no" name="q29" value="No" onchange="toggleAdditionalInput('q29_additional')">
+                            <label for="q29_no">NO</label>
+                        </div>
+                    </div>
                 </div>
-                <div class="radio-option">
-               <input type="radio" id="q29_no" name="q29" value="No">
-                <label for="q29_no">NO</label>
+                <div id="q29_additional" class="additional-input">
+                    <label for="q29_detail">Especifique:</label>
+                    <input type="text" id="q29_detail" name="q29_detail">
                 </div>
-               </div>
-           </div>
-
-
-            <div id="q29_additional" class="additional-input" style="display: none;">
-            <label for="q29_detail">Especifique:</label>
-             <input type="text" id="q29_detail" name="q29_detail">
-               </div>
-
                 
                 <div class="question-row">
                     <div class="question-text">30.- ¿Ha tenido pérdida de peso sin razón aparente?</div>
@@ -1026,7 +1119,7 @@
             </div>
             
             <div class="form-group">
-                <p>Si luego de haber hecho su donación, usted considera o recuerda que por cualquier motivo su sangre no debe ser utilizada, favor de llamarnos al teléfono No.<input type="tel" id="telefonoContacto" name="telefonoContacto" style="width: 150px; display: inline-block;"></p>
+                <p style="font-size: 0.9rem; line-height: 1.4;">Si luego de haber hecho su donación, usted considera o recuerda que por cualquier motivo su sangre no debe ser utilizada, favor de llamarnos al teléfono No. <input type="tel" id="telefonoContacto" name="telefonoContacto" style="width: 150px; display: inline-block;"></p>
             </div>
             
             <div class="btn-container no-print">
@@ -1035,90 +1128,91 @@
         </form>
     </div>
     
-   <script>
-    // Función para mostrar/ocultar campos adicionales
-    function toggleAdditionalInput(id) {
-        const additionalInput = document.getElementById(id);
-        const questionName = id.split('_')[0];
-        const siRadio = document.getElementById(questionName + '_si');
+    <script>
+        // Función para mostrar/ocultar campos adicionales
+        function toggleAdditionalInput(id) {
+            const additionalInput = document.getElementById(id);
+            const questionName = id.split('_')[0];
+            const siRadio = document.getElementById(questionName + '_si');
 
-        if (siRadio && siRadio.checked) {
-            additionalInput.style.display = 'block';
-        } else {
-            additionalInput.style.display = 'none';
-            // Limpia el campo adicional cuando se oculta
-            const inputField = additionalInput.querySelector('input, textarea');
-            if (inputField) inputField.value = '';
-        }
-    }
-
-    // Esperar a que el DOM cargue completamente
-    document.addEventListener('DOMContentLoaded', function () {
-        // Lista de preguntas con campos adicionales (CORREGIDA)
-        const questionsWithAdditional = ['q2', 'q3', 'q4', 'q6', 'q24', 'q25', 'q26', 'q29', 'q31'];
-
-
-        questionsWithAdditional.forEach(q => {
-            const siRadio = document.getElementById(q + '_si');
-            const noRadio = document.getElementById(q + '_no');
-
-            if (siRadio && noRadio) {
-                siRadio.addEventListener('change', () => toggleAdditionalInput(q + '_additional'));
-                noRadio.addEventListener('change', () => toggleAdditionalInput(q + '_additional'));
+            if (siRadio && siRadio.checked) {
+                additionalInput.style.display = 'block';
+            } else {
+                additionalInput.style.display = 'none';
+                // Limpia el campo adicional cuando se oculta
+                const inputField = additionalInput.querySelector('input, textarea');
+                if (inputField) inputField.value = '';
             }
-        });
+        }
 
-        // Calcular edad automáticamente a partir de la fecha de nacimiento
-        const fechaNacimiento = document.getElementById('fechaNacimiento');
-        const edad = document.getElementById('edad');
+        // Esperar a que el DOM cargue completamente
+        document.addEventListener('DOMContentLoaded', function () {
+            // Lista de preguntas con campos adicionales
+            const questionsWithAdditional = ['q2', 'q3', 'q4', 'q6', 'q24', 'q25', 'q26', 'q29', 'q31'];
 
-        if (fechaNacimiento && edad) {
-            fechaNacimiento.addEventListener('change', function () {
-                if (this.value) {
-                    const birthDate = new Date(this.value);
-                    const today = new Date();
-                    let calculatedAge = today.getFullYear() - birthDate.getFullYear();
-                    const m = today.getMonth() - birthDate.getMonth();
+            questionsWithAdditional.forEach(q => {
+                const siRadio = document.getElementById(q + '_si');
+                const noRadio = document.getElementById(q + '_no');
 
-                    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-                        calculatedAge--;
-                    }
-
-                    edad.value = calculatedAge;
+                if (siRadio && noRadio) {
+                    siRadio.addEventListener('change', () => toggleAdditionalInput(q + '_additional'));
+                    noRadio.addEventListener('change', () => toggleAdditionalInput(q + '_additional'));
                 }
             });
-        }
 
-        // Configurar exportación a PDF
-        const exportBtn = document.getElementById('exportBtn');
+            // Calcular edad automáticamente a partir de la fecha de nacimiento
+            const fechaNacimiento = document.getElementById('fechaNacimiento');
+            const edad = document.getElementById('edad');
 
-        if (exportBtn) {
-            exportBtn.addEventListener('click', function () {
-                const options = {
-                    margin: 10,
-                    filename: 'Formulario_Donantes_2025.pdf',
-                    image: { type: 'jpeg', quality: 0.98 },
-                    html2canvas: { scale: 2, useCORS: true },
-                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-                };
+            if (fechaNacimiento && edad) {
+                fechaNacimiento.addEventListener('change', function () {
+                    if (this.value) {
+                        const birthDate = new Date(this.value);
+                        const today = new Date();
+                        let calculatedAge = today.getFullYear() - birthDate.getFullYear();
+                        const m = today.getMonth() - birthDate.getMonth();
 
-                exportBtn.style.display = 'none';
+                        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                            calculatedAge--;
+                        }
 
-                html2pdf().set(options).from(document.getElementById('pdfContent')).save().then(() => {
-                    exportBtn.style.display = 'block';
+                        edad.value = calculatedAge;
+                    }
                 });
-            });
-        }
+            }
 
-        // Establecer la fecha actual por defecto
-        const fechaHoy = document.getElementById('fecha');
-        if (fechaHoy) {
-            const today = new Date();
-            const formattedDate = today.toISOString().substr(0, 10);
-            fechaHoy.value = formattedDate;
-        }
-    });
-</script>
+            // Configurar exportación a PDF
+            const exportBtn = document.getElementById('exportBtn');
 
+            if (exportBtn) {
+                exportBtn.addEventListener('click', function () {
+                    const options = {
+                        margin: 10,
+                        filename: 'Formulario_Donantes_2025.pdf',
+                        image: { type: 'jpeg', quality: 0.98 },
+                        html2canvas: { scale: 2, useCORS: true },
+                        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                    };
+
+                    // Mostrar algún indicador de carga
+                    exportBtn.textContent = "Generando PDF...";
+                    exportBtn.disabled = true;
+
+                    html2pdf().set(options).from(document.getElementById('pdfContent')).save().then(() => {
+                        exportBtn.textContent = "Exportar a PDF";
+                        exportBtn.disabled = false;
+                    });
+                });
+            }
+
+            // Establecer la fecha actual por defecto
+            const fechaHoy = document.getElementById('fecha');
+            if (fechaHoy) {
+                const today = new Date();
+                const formattedDate = today.toISOString().substr(0, 10);
+                fechaHoy.value = formattedDate;
+            }
+        });
+    </script>
 </body>
 </html>
